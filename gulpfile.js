@@ -12,84 +12,84 @@ let paths = {
 };
 
 // ------------------------------------------ minify js ---------------------------------------------- //
-function minifyJsTask(number) {
-    return gulp.src(`./src/${number}/js/*.js`)
+function minifyJsTask() {
+    return gulp.src(`./src/js/*.js`)
         // change js to js 5
         .pipe(babel({
             presets: ['@babel/env']
         }))
         // minify js
         .pipe(uglify())
-        .pipe(gulp.dest(`dist/${number}/js`));
+        .pipe(gulp.dest(`dist/js`));
 }
 
 // minify all js
 gulp.task('minify-all-js', gulp.parallel(
-    ...paths.src.map(number => () => minifyJsTask(number))
+    minifyJsTask
 ));
 // ------------------------------------------ end minify js ---------------------------------------------- //
 
 // ------------------------------------------ minify html ---------------------------------------------- //
-function minifyHtmlTask(number) {
-    return gulp.src(`./src/${number}/*.html`)
+function minifyHtmlTask() {
+    return gulp.src(`./src/*.html`)
         // minify html
         .pipe(htmlmin({collapseWhitespace: true}))
-        .pipe(gulp.dest(`dist/${number}/`));
+        .pipe(gulp.dest(`dist/`));
 }
 
 // minify all html
 gulp.task('minify-all-html', gulp.parallel(
-    ...paths.src.map(number => () => minifyHtmlTask(number))
+    minifyHtmlTask
 ));
 // ------------------------------------------ end minify html ---------------------------------------------- //
 
 // ------------------------------------------ minify css ---------------------------------------------- //
-function minifyCssTask(number) {
-    return gulp.src(`./src/${number}/css/*.css`)
+function minifyCssTask() {
+    return gulp.src(`./src/css/*.css`)
         // minify css
         .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest(`dist/${number}/css`));
+        .pipe(gulp.dest(`dist/css`));
 }
 
 // minify all css
 gulp.task('minify-all-css', gulp.parallel(
-    ...paths.src.map(number => () => minifyCssTask(number))
+    minifyCssTask
 ));
 // ------------------------------------------ end minify css ---------------------------------------------- //
 
 // ------------------------------------------ move font ---------------------------------------------- //
-function moveFontTask(number) {
-    return gulp.src(`./src/${number}/font/**/*`)
-        .pipe(gulp.dest(`dist/${number}/font`));
+function moveFontTask() {
+    return gulp.src(`./src/font/**/*`)
+        .pipe(gulp.dest(`dist/font`));
 }
 
 // move all font
 gulp.task('move-all-font', gulp.parallel(
-    ...paths.src.map(number => () => moveFontTask(number))
+    moveFontTask
 ));
 // ------------------------------------------ end move font ---------------------------------------------- //
 
 // ------------------------------------------ move img ---------------------------------------------- //
-function moveImgTask(number) {
-    return gulp.src(`./src/${number}/img/**/*`)
-        .pipe(gulp.dest(`dist/${number}/img`));
+function moveImgTask() {
+    return gulp.src(`./src/img/**/*`)
+        .pipe(gulp.dest(`dist/img`));
 }
 
 // move all img
 gulp.task('move-all-img', gulp.parallel(
-    ...paths.src.map(number => () => moveImgTask(number))
+    moveImgTask
 ));
 // ------------------------------------------ end move img ---------------------------------------------- //
 
 // ------------------------------------------ move icon ---------------------------------------------- //
-function moveIconTask(number) {
-    return gulp.src(`./src/${number}/icon/**/*`)
-        .pipe(gulp.dest(`dist/${number}/icon`));
+function moveIconTask() {
+    return gulp.src(`./src/icon/**/*`)
+        .pipe(gulp.dest(`dist/icon`));
 }
 
 // move all icon
 gulp.task('move-all-icon', gulp.parallel(
-    ...paths.src.map(number => () => moveIconTask(number))
+    moveIconTask
 ));
 // ------------------------------------------ end move icon ---------------------------------------------- //
 
