@@ -13,11 +13,11 @@ let paths = {
 
 // ------------------------------------------ minify js ---------------------------------------------- //
 function minifyJsTask() {
-    return gulp.src(`./src/js/*.js`)
+    return gulp.src(`./src/js/*`)
         // change js to js 5
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
+        // .pipe(babel({
+        //     presets: ['@babel/env']
+        // }))
         // minify js
         .pipe(uglify())
         .pipe(gulp.dest(`dist/js`));
@@ -33,7 +33,7 @@ gulp.task('minify-all-js', gulp.parallel(
 function minifyHtmlTask() {
     return gulp.src(`./src/*.html`)
         // minify html
-        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(htmlmin({ collapseWhitespace: true }))
         .pipe(gulp.dest(`dist/`));
 }
 
@@ -47,7 +47,7 @@ gulp.task('minify-all-html', gulp.parallel(
 function minifyCssTask() {
     return gulp.src(`./src/css/*.css`)
         // minify css
-        .pipe(cleanCSS({compatibility: 'ie8'}))
+        // .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(gulp.dest(`dist/css`));
 }
 
