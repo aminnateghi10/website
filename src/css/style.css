@@ -2339,6 +2339,9 @@ body {
 
   header.mobile-header-1 {
     display: block;
+    position: fixed;
+    z-index: 3;
+    width: 100%;
   }
 
   main.content {
