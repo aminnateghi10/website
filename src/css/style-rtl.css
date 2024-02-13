@@ -337,3 +337,7 @@ body.dark .triangle-left-md::before {
   }
 
 }
+
+.text-justify {
+text-align: justify;
+}
